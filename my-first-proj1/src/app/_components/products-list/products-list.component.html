@@ -1,0 +1,42 @@
+<h2>Product List</h2>
+
+<div *ngIf = 'products.length > 0; then showTableBlock; else noDataBlock'></div>
+<ng-template #showTableBlock>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Available</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor = 'let product of products'>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td [ngClass] = "{'in-stock': isProductInStock(product), 'out-of-stock':!isProductInStock(product)}">
+                {{isProductInStock(product) ? 'Avaialble': 'Not Available'}}
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+</ng-template>
+
+<ng-template #noDataBlock>
+    <h2>No data</h2>
+</ng-template>
+<!-- ngFor/ngIf/ngSwitch are structural directive(They conditionally add or remove HTML element)-->
+
+<div *ngIf = 'isVisible'>It is visible</div>
+
+
+<ng-container *ngFor="let product of products">
+    <!--Display each item conditionally-->
+    <div *ngIf = "product.visible">
+        {{product.id}}
+    </div>
+</ng-container>

@@ -1,0 +1,31 @@
+<p>binding works!</p>
+
+<!-- String interpolation-->
+{{message}}
+
+<img src="../../../assets/image1.jpg"> <!-- no property binding-->
+<!-- Property binding-->
+<img [src] = 'imgPath'>
+<button [disabled]="isButtonDisabled()">Click Me</button>
+<button [disabled]="buttonDisabled">Click Me</button>
+
+<!--event binding-->
+<button (click)="buttonClicked()">Click me</button>
+
+
+<!--Class binding-->
+<div [className]="'red size20'">Some content here</div>
+
+<div [class.green]="isActive" [class.grey] = "!isActive">Some more Content</div>
+
+<div [className] = "hasError() ? 'red' : 'green'">{{hasError() ? 'Error': 'No Error'}}</div>
+
+<!--ngClass(Directive) -->
+<div [ngClass] = "{'highlight': isHighlighted(), 'bold':isBold}">
+Highlighted and Bold Text
+</div>
+
+<!--Style binding-->
+<div [ngStyle] = "{color:'purple', 'font-size':'25px'}">Style Binding</div>
+
+<div [ngStyle] = "getStyle()">Conditional Styling</div>

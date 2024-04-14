@@ -1,0 +1,23 @@
+.red{
+  color:red;
+}
+
+.size20{
+  font-size: 20px;
+}
+
+.green{
+  color:green;
+}
+
+.grey{
+  color:grey;
+}
+
+.highlight{
+  background-color: yellow;
+}
+
+.bold{
+  font-weight: bolder;
+}
