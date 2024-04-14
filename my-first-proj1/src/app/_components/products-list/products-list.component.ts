@@ -15,6 +15,7 @@ class Product{
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent {
+  shortDesc:string = "Click to see more Click to see more Click to see more"
 
   //JSON data
   products:Product[] = [

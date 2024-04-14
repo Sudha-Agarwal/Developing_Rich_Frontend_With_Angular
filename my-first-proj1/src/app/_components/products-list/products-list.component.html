@@ -9,6 +9,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Available</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -19,6 +20,14 @@
             <td>{{product.description}}</td>
             <td [ngClass] = "{'in-stock': isProductInStock(product), 'out-of-stock':!isProductInStock(product)}">
                 {{isProductInStock(product) ? 'Avaialble': 'Not Available'}}
+            </td>
+            <td>
+                <a [routerLink] = "['/product-detail', product.id]" 
+                [title]="shortDesc">View</a>
+
+                <a [routerLink] = "['/product-detail']" 
+                [queryParams] = "{id: product.id, name:product.name}"
+                [title]="shortDesc">View(Query parameter)</a>
             </td>
 
         </tr>
