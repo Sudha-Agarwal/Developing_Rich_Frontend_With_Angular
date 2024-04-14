@@ -22,7 +22,7 @@
                 {{isProductInStock(product) ? 'Avaialble': 'Not Available'}}
             </td>
             <td>
-                <a [routerLink] = "['/product-detail', product.id]" 
+                <a [routerLink] = "['/product-detail', product.id, product.name]" 
                 [title]="shortDesc">View</a>
 
                 <a [routerLink] = "['/product-detail']" 

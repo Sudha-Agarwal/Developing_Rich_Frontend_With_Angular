@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { BindingsComponent } from './_components/bindings/bindings.component';
 import { ProductsListComponent } from './_components/products-list/products-list.component';
 import { ProductDetailComponent } from './_components/product-detail/product-detail.component';
+import { LoginFormComponent } from './_components/login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BindingsComponent,
     ProductsListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

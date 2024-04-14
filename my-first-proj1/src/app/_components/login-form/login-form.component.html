@@ -1,0 +1,26 @@
+
+<form class="row g-3" #loginForm = "ngForm" 
+(ngSubmit) = "loginForm.valid && onSubmit()">
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" id="validationCustom01"  
+      [(ngModel)] = "user.email" required #email = "ngModel"
+      [ngClass] = "{'is-invalid' : loginForm.submitted && email.errors}">
+      <div *ngIf = "loginForm.submitted && email.errors" class="invalid-feedback">
+        <p *ngIf = "email.errors && email.errors['required']">Email is required</p>       
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Password</label>
+      <input type="password" class="form-control" id="validationCustom02"  
+      [(ngModel)] = "user.password" required #password = "ngModel"
+      minlength="6"
+      [ngClass] = "{'is-invalid' : loginForm.submitted && email.errors}">
+      <div *ngIf = "loginForm.submitted && password.errors" class="invalid-feedback">
+        <p *ngIf = "password.errors && password.errors['required']">Email is required</p>       
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
