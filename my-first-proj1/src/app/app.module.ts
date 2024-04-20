@@ -9,7 +9,8 @@ import { ProductDetailComponent } from './_components/product-detail/product-det
 import { LoginFormComponent } from './_components/login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModelFormComponent } from './_components/model-form/model-form.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ObservableComponent } from './_components/observable/observable.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,13 +18,15 @@ import { ModelFormComponent } from './_components/model-form/model-form.componen
     ProductsListComponent,
     ProductDetailComponent,
     LoginFormComponent,
-    ModelFormComponent
+    ModelFormComponent,
+    ObservableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

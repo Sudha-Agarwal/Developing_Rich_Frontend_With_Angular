@@ -6,6 +6,8 @@ import { ProductDetailComponent } from './_components/product-detail/product-det
 import { LoginFormComponent } from './_components/login-form/login-form.component';
 import { ModelFormComponent } from './_components/model-form/model-form.component';
 
+import { ObservableComponent } from './_components/observable/observable.component';
+
 //Defining the routing paths
 const routes: Routes = [
   {path: 'bindings', component:BindingsComponent},
@@ -13,7 +15,8 @@ const routes: Routes = [
   {path: 'product-detail/:id/:name',component:ProductDetailComponent}, //parameterized routing
   {path: 'product-detail',component:ProductDetailComponent},
   {path: 'login-form', component:LoginFormComponent},
-  {path: 'model-form', component:ModelFormComponent}
+  {path: 'model-form', component:ModelFormComponent},
+  {path: 'observable', component:ObservableComponent}
 ];
 
 @NgModule({

@@ -13,8 +13,13 @@ export class LoginFormComponent {
   constructor(private userService: UserService){}
 
   onSubmit(){
-    alert(this.userService.checkLogin());//calling service method
+    //alert(this.userService.checkLogin());//calling service method
     //alert(this.user.password)
+    this.userService.checkLogin().subscribe({
+      next:data=>console.log(data),
+      error:error=> console.log(error),
+      complete:()=> console.log('complete')
+    })
   }
 
 }
