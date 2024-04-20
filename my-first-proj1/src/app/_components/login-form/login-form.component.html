@@ -4,20 +4,23 @@
     <div class="col-md-4">
       <label for="validationCustom01" class="form-label">Email</label>
       <input type="email" name="email" class="form-control" id="validationCustom01"  
-      [(ngModel)] = "user.email" required #email = "ngModel"
+      [(ngModel)] = "user.email" required #email = "ngModel" 
+      pattern="^[a-zA-Z0-9\.-]+@[a-zA-Z\.-]+\.[a-zA-Z]{2,4}$"
       [ngClass] = "{'is-invalid' : loginForm.submitted && email.errors}">
       <div *ngIf = "loginForm.submitted && email.errors" class="invalid-feedback">
-        <p *ngIf = "email.errors && email.errors['required']">Email is required</p>       
+        <p *ngIf = "email.errors && email.errors['required']">Email is required</p>   
+        <p *ngIf = "email.errors && email.errors['pattern']">Email is not valid</p>           
       </div>
     </div>
     <div class="col-md-4">
       <label for="validationCustom02" class="form-label">Password</label>
-      <input type="password" class="form-control" id="validationCustom02"  
-      [(ngModel)] = "user.password" required #password = "ngModel"
-      minlength="6"
-      [ngClass] = "{'is-invalid' : loginForm.submitted && email.errors}">
+      <input type="password" name="password" class="form-control" id="validationCustom02"  
+      [(ngModel)] = "user.password" required #password = "ngModel" 
+      minlength="6" maxlength="10"
+      [ngClass] = "{'is-invalid' : loginForm.submitted && password.errors}">
       <div *ngIf = "loginForm.submitted && password.errors" class="invalid-feedback">
-        <p *ngIf = "password.errors && password.errors['required']">Email is required</p>       
+        <p *ngIf = "password.errors && password.errors['required']">Password is required</p> 
+        <p *ngIf = "password.errors && password.errors['minlength']">Password should be 6 characters long</p>             
       </div>
     </div>
     <div class="col-12">

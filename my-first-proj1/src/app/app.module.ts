@@ -7,7 +7,8 @@ import { BindingsComponent } from './_components/bindings/bindings.component';
 import { ProductsListComponent } from './_components/products-list/products-list.component';
 import { ProductDetailComponent } from './_components/product-detail/product-detail.component';
 import { LoginFormComponent } from './_components/login-form/login-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModelFormComponent } from './_components/model-form/model-form.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,14 @@ import { FormsModule } from '@angular/forms';
     BindingsComponent,
     ProductsListComponent,
     ProductDetailComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ModelFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

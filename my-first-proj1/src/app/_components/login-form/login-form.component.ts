@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,8 +9,12 @@ import { Component } from '@angular/core';
 export class LoginFormComponent {
   user = {email:'', password:''};
 
+  //An object of UserService class would be created and injected (DI)
+  constructor(private userService: UserService){}
+
   onSubmit(){
-    alert(this.user.email)
+    alert(this.userService.checkLogin());//calling service method
+    //alert(this.user.password)
   }
 
 }
