@@ -24,7 +24,7 @@ export class ModelFormComponent {
   }
 
   submit(){
-    alert(this.userService.checkLogin())
+    //alert(this.userService.checkLogin())
     console.table(this.RegisterationForm.value);
   }
 

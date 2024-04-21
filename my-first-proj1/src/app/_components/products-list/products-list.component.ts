@@ -1,28 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/_models/product.model';
+import { ProductsService } from 'src/app/_services/products.service';
 
 //Model class
-class Product{
+/*class Product{
   id!:number;
   name!:string;
   description!:string;
   visible!:boolean;
   stock!:number;
-}
+}*/
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
-export class ProductsListComponent {
+export class ProductsListComponent implements OnInit{
   shortDesc:string = "Click to see more Click to see more Click to see more"
 
+  products!:Product[];
+
+  constructor(private productService:ProductsService){}
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe({
+      next:data=>this.products = data,
+      error:error=> console.log(error),
+      complete:()=> console.log('complete')
+    })
+  }
+
   //JSON data
-  products:Product[] = [
+  /*products:Product[] = [
     {id:1, name:'Product1',description:'Description1', visible:true, stock:10},
     {id:2, name:'Product2',description:'Description2', visible:true, stock:0}   
     
-  ];
+  ];*/
 
   isVisible:boolean = false;
 

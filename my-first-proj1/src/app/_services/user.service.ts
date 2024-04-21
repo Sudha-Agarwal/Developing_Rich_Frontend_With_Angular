@@ -8,11 +8,12 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   constructor(private http:HttpClient) { }
-  url = 'https://jsonplaceholder.typicode.com/posts';
+  //url = 'https://jsonplaceholder.typicode.com/posts';
+  baseUrl = 'http://localhost:3000';
 
   //a service method. this method would be called from a component class
-  checkLogin():Observable<any[]>{
-    return this.http.get<any[]>(this.url);
+  checkLogin(user:any):Observable<any>{
+    return this.http.post<any>(this.baseUrl+'/login',user);
   }
 
   getObservableData():Observable<any>{   
@@ -21,8 +22,8 @@ export class UserService {
       const intervalId = setInterval(()=>{
         observer.next(count);
         if(count === 5){
-          //observer.complete();
-          //clearInterval(intervalId);
+          observer.complete();
+          clearInterval(intervalId);
         }
         count++
       },1000)
@@ -30,6 +31,8 @@ export class UserService {
     return numberObservable   
 
   }
+
+
 
 
 }
