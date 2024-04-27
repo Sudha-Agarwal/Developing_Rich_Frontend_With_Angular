@@ -19,16 +19,23 @@ import { ProductsService } from 'src/app/_services/products.service';
 export class ProductsListComponent implements OnInit{
   shortDesc:string = "Click to see more Click to see more Click to see more"
 
-  products!:Product[];
+  products:Product[]=[];
   showEditProduct:boolean=false;
   selectedProduct!:Product;
+  errorMessage:string;
+  showAddProduct:boolean = false;
 
   constructor(private productService:ProductsService){}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
-      next:data=>this.products = data,
-      error:error=> console.log(error),
+      next:data=>{this.products = data},
+      error:error=> {
+        alert(error.error.message);
+        console.log(error);
+        this.errorMessage = error.error.message
+        //redirect to some error page
+      },
       complete:()=> console.log('complete')
     })
   }
@@ -63,6 +70,11 @@ export class ProductsListComponent implements OnInit{
 
   cancelUpdate(){
     this.showEditProduct = false;
+  }
+
+  addNewProduct(){
+    this.showAddProduct = true;
+
   }
 
 }

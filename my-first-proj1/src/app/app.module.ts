@@ -14,6 +14,7 @@ import { ObservableComponent } from './_components/observable/observable.compone
 import { ParentComponent } from './_components/parent/parent.component';
 import { ChildComponent } from './_components/child/child.component';
 import { EditProductComponent } from './_components/edit-product/edit-product.component';
+import { AddProductComponent } from './_components/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { EditProductComponent } from './_components/edit-product/edit-product.co
     ObservableComponent,
     ParentComponent,
     ChildComponent,
-    EditProductComponent
+    EditProductComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

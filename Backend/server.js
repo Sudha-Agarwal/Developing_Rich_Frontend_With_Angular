@@ -25,9 +25,13 @@ const products = [
  
  app.get('/products', (req,res)=>{
     if(products.length ===0){
-        res.status(404).json({message:'No data Found'})
+        res.status(404).json({message:'No data Found for the products'})
     }
-    res.status(200).json(products);
+    else{
+      res.status(200).json(products);
+
+    }
+   
  })
 
  app.post('/products',(req,res)=>{

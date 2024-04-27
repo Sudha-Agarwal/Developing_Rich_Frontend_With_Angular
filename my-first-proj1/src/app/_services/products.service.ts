@@ -7,13 +7,13 @@ import { Product } from '../_models/product.model';
   providedIn: 'root'
 })
 export class ProductsService {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'http://localhost:3000';//server url
   constructor(private http:HttpClient) { }
 
   getProducts():Observable<Product[]>{
     return this.http.get<Product[]>(this.baseUrl+'/products')   
 
-  }
+  } 
 
 
 }
