@@ -28,11 +28,16 @@
                 <a [routerLink] = "['/product-detail']" 
                 [queryParams] = "{id: product.id, name:product.name}"
                 [title]="shortDesc">View(Query parameter)</a>
+                <button class="btn btn-primary" (click)="showDetails(product)">Edit</button>
             </td>
 
         </tr>
     </tbody>
 </table>
+<div *ngIf="showEditProduct">
+    <app-edit-product [product]="selectedProduct" 
+    (productChange)="update($event)" (cancelUpdate)="cancelUpdate()"></app-edit-product>
+</div>
 </ng-template>
 
 <ng-template #noDataBlock>

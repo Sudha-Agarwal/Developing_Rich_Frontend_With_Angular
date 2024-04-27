@@ -20,6 +20,8 @@ export class ProductsListComponent implements OnInit{
   shortDesc:string = "Click to see more Click to see more Click to see more"
 
   products!:Product[];
+  showEditProduct:boolean=false;
+  selectedProduct!:Product;
 
   constructor(private productService:ProductsService){}
 
@@ -42,6 +44,25 @@ export class ProductsListComponent implements OnInit{
 
   isProductInStock(product:Product){
     return product.stock > 0;
+  }
+
+  showDetails(product:Product){
+    this.showEditProduct = true;
+    this.selectedProduct = Object.assign({},product)
+
+
+  }
+
+  update(product:Product){
+    this.showEditProduct = false;
+    var target = this.products.find(e=> e.id===product.id);
+    Object.assign(target, product);
+
+
+  }
+
+  cancelUpdate(){
+    this.showEditProduct = false;
   }
 
 }
