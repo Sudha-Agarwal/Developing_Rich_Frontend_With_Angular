@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/_models/product.model';
 import { ProductsService } from 'src/app/_services/products.service';
+declare var bootstrap:any;
 
 //Model class
 /*class Product{
@@ -24,6 +25,11 @@ export class ProductsListComponent implements OnInit{
   selectedProduct!:Product;
   errorMessage:string;
   showAddProduct:boolean = false;
+  modalEditElement:HTMLElement;
+  modalEdit:any;
+
+  modalAddElement:HTMLElement;
+  modalAdd:any;
 
   constructor(private productService:ProductsService){}
 
@@ -55,26 +61,66 @@ export class ProductsListComponent implements OnInit{
 
   showDetails(product:Product){
     this.showEditProduct = true;
-    this.selectedProduct = Object.assign({},product)
+    this.selectedProduct = Object.assign({},product);
+    this.modalEditElement = document.getElementById('editProductModal');
+    this.modalEdit = new bootstrap.Modal(this.modalEditElement);
+    this.modalEdit.show();
 
 
   }
 
   update(product:Product){
     this.showEditProduct = false;
-    var target = this.products.find(e=> e.id===product.id);
-    Object.assign(target, product);
-
+    //var target = this.products.find(e=> e.id===product.id);
+    //Object.assign(target, product);
+    this.productService.updateProduct(product).subscribe({
+      next:data=>{
+        alert(data.message);
+        this.ngOnInit();
+      },
+      error:error=>alert(error.message)
+    })
+    this.modalEdit.hide();
 
   }
 
   cancelUpdate(){
     this.showEditProduct = false;
+    this.modalEdit.hide();
   }
 
   addNewProduct(){
     this.showAddProduct = true;
+    this.modalAddElement = document.getElementById('addProductModal');
+    this.modalAdd = new bootstrap.Modal(this.modalAddElement);
+    this.modalAdd.show();
+    
 
+  }
+
+  added(product:Product){
+    this.productService.addProduct(product).subscribe({
+      next:(data:any)=>{
+       
+          alert("product added");
+          this.ngOnInit();
+      
+      },
+      error:error=>alert(error)
+    });
+    this.modalAdd.hide();
+  }
+
+  deleteProduct(id:number){
+    if(confirm('Are you sure you want to delete this product')){
+      this.productService.deleteProduct(id).subscribe({
+        next:data=> {
+          alert(data.message);
+          this.ngOnInit();
+        }
+      })
+    }
+    
   }
 
 }

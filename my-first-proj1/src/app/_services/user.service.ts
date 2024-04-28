@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 })
 //object of this class would be injected into a component class (constructor)
 export class UserService {
+  token:string='';
 
   constructor(private http:HttpClient) { }
   //url = 'https://jsonplaceholder.typicode.com/posts';
@@ -30,6 +31,18 @@ export class UserService {
     })
     return numberObservable   
 
+  }
+
+  setToken(token:string){
+    this.token = token;
+  }
+
+  getToken(){
+    return this.token;
+  }
+
+  deleteToken(){
+    delete this.token;
   }
 
 

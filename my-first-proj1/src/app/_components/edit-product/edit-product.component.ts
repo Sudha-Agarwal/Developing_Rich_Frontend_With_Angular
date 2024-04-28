@@ -13,7 +13,6 @@ export class EditProductComponent {
 
   update(){
     this.productChange.emit(this.product);
-
   }
 
   onCancelUpdate(){

@@ -1,6 +1,7 @@
 <h2>Product List</h2>
-<button class="btn-primary btn" (click)="addNewProduct()">Add new Product</button>
+<button class="btn btn-primary" (click)="addNewProduct()">Add new product</button>
 <div *ngIf = 'products.length > 0; then showTableBlock; else noDataBlock'></div>
+
 <ng-template #showTableBlock>
 <table>
     <thead>
@@ -8,8 +9,9 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Category</th>
             <th>Available</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -18,34 +20,67 @@
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
+            <td>{{product.category}}</td>
             <td [ngClass] = "{'in-stock': isProductInStock(product), 'out-of-stock':!isProductInStock(product)}">
                 {{isProductInStock(product) ? 'Avaialble': 'Not Available'}}
             </td>
             <td>
-                <a [routerLink] = "['/product-detail', product.id, product.name]" 
-                [title]="shortDesc">View</a>
-
-                <a [routerLink] = "['/product-detail']" 
-                [queryParams] = "{id: product.id, name:product.name}"
-                [title]="shortDesc">View(Query parameter)</a>
+                <a [routerLink]="['/product-detail',product.id]">View</a>
+                <a [routerLink]="['/product-detail']" [queryParams]="{ id: product.id }">
+                    View(Query Params)
+                </a>
                 <button class="btn btn-primary" (click)="showDetails(product)">Edit</button>
+                <button class="btn btn-primary" (click)="deleteProduct(product.id)">Delete</button>                
+
             </td>
 
         </tr>
     </tbody>
 </table>
-<div *ngIf="showEditProduct">
-    <app-edit-product [product]="selectedProduct" 
-    (productChange)="update($event)" (cancelUpdate)="cancelUpdate()"></app-edit-product>
-</div>
 
-<div *ngIf="showAddProduct">
-    <app-add-product></app-add-product>
+    
+<!-- Edit Product Modal -->
+<div *ngIf="showEditProduct">
+<div class="modal" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Include app-edit-product component here -->
+        <app-edit-product [product]="selectedProduct" (productChange)="update($event)" (cancelUpdate)="cancelUpdate()"></app-edit-product>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+<!-- Add Product Modal -->
+<div  class="modal" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+          <button type="button" class="btn-close"  aria-label="Close"></button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Include app-add-product component here -->
+          <app-add-product (productAdded)="added($event)"></app-add-product>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #noDataBlock>
-    <h2>{{errorMessage}}</h2>
+    <h2>No data</h2>
 </ng-template>
 <!-- ngFor/ngIf/ngSwitch are structural directive(They conditionally add or remove HTML element)-->
 

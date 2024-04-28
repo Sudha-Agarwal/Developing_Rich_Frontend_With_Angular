@@ -1,21 +1,27 @@
-<form [formGroup]="productForm" (ngSubmit) = 'onSubmit()'>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div>
-        <label for ="name">Name:</label>
-        <input type="text" formControlName = "name" id="name">        
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name" id="name" />
+      <div *ngIf="productForm.get('name').invalid && productForm.get('name').touched">
+        Name is required.
+      </div>
     </div>
     <div>
-        <label for ="description">Description:</label>
-        <input type="text" formControlName = "description" id="description">        
+      <label for="description">Description:</label>
+      <textarea formControlName="description" id="description"></textarea>
+      <div *ngIf="productForm.get('description').invalid && productForm.get('description').touched">
+        Description is required.
+      </div>
     </div>
-
     <div>
         <label for="category">Category:</label>
         <select id="category" name="category" formControlName="category">
           <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
         </select>
-        
+        <div *ngIf="productForm.get('category').invalid && productForm.get('category').touched">
+            Please select a category.
+          </div>
     </div>
-    <button type="submit">Add</button>
 
-
-</form>
+    <button type="submit">Submit</button>
+  </form>

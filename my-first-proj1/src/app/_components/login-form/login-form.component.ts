@@ -22,7 +22,8 @@ export class LoginFormComponent {
       next:data=>{alert(data.message);
         sessionStorage.setItem('isLoggedIn', "true");
         this.sharedService.loggedIn();
-
+        this.userService.setToken(data.token);
+        console.log(this.userService.getToken())
       },
       error:error=> alert('error'),
       complete:()=> console.log('complete')

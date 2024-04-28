@@ -1,29 +1,63 @@
 const express = require('express'); //importing express library
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 
 
 const app = express(); //creates an express application
  app.use(bodyParser.json()); //to parse JSON request bodies
 app.use(cors()); //enables cors for all routes
 
+const secretKey = '1234';
+
 //sample data for products
 const products = [
     {id:1, name:'Product1',description:'Description1', category:'Mobile'},
     {id:2, name:'Product2', description:'Description2', category:'Mobile'}
 ]
+
+const users = [{email:'sudha@gmail.com', password:'123456'}];
+
  //API to handle incoming request
 
  app.post('/login', (req,res)=>{
     const {email, password} = req.body;
     console.log(`${email} ${password}`);
-    
-    res.status(200).json({message:'Login unsuccessful'});
+
+    const user = users.find(user=>user.email===email && user.password===password)
+    if(user){
+      const payload = {
+         email: user.email,
+         iat: Math.floor(Date.now() / 1000),
+         role: 'user',
+     };
+     const token = jwt.sign(payload,secretKey);
+     res.status(200).json({message:'Login successful', token:token});
+    }
+    else{
+      res.status(401).json({message:'Invalid credentials'});
+    }    
  });
 
  //middleware for authentication
- 
+ app.use((req,res,next)=>{
+   const token = req.header('Authorization');
+
+   if(!token){
+      return res.status(401).send("Access denied.no token provided")
+   }
+   try{
+      const decoded = jwt.verify(token,secretKey,{});
+      req.user = decoded;
+      console.log(req.user);
+      next();
+   }
+   catch(er){
+      res.status(404).send('Invalid token')
+   }
+ })
  app.get('/products', (req,res)=>{
+   console.log("Req after authentication: " +req.user.role);
     if(products.length ===0){
         res.status(404).json({message:'No data Found for the products'})
     }
@@ -61,6 +95,24 @@ const products = [
    }
 
    return res.status(200).json({message:'Product updated successfully', product:productToUpdate})
+
+
+ })
+
+ app.delete('/products/:id',(req,res)=>{
+   const productId = parseInt(req.params.id); // Convert productId to a number
+   console.log(productId);
+   // Find the index of the product with the specified ID in the products array
+   const index = products.findIndex(product => product.id === productId);
+ console.log(index)
+   // If the product with the specified ID exists, remove it from the products array
+   if (index !== -1) {
+     products.splice(index, 1);
+     return res.status(200).json({ message: 'Product deleted successfully' });
+   } else {
+     // If the product with the specified ID doesn't exist, return a 404 Not Found response
+     return res.status(404).json({ error: 'Product not found' });
+   }
 
 
  })
