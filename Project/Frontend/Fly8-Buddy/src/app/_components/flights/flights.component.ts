@@ -49,7 +49,7 @@ export class FlightsComponent implements OnInit{
   incrementChildren() {
     if (!this.flight.numberOfChildren) {
       this.flight.numberOfChildren = 1;
-    } else {
+    } else if(this.flight.numberOfChildren<=5) {
       this.flight.numberOfChildren++;
     }
   }

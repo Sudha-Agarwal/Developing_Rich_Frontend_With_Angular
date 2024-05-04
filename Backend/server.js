@@ -68,6 +68,17 @@ const users = [{email:'sudha@gmail.com', password:'123456'}];
    
  })
 
+ /*user = {
+  name:'Sudha',
+  addresses:[{
+    address1: 'gf',
+    address2 : 'dfg'
+  }   
+  ]
+ }
+
+ const addresses1 = req.body.addresses[0].address1*/
+
  app.post('/products',(req,res)=>{
    const newproduct = req.body;
    const lastProductId = products.length >0 ? products[products.length-1].id :0;

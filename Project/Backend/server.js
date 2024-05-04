@@ -93,6 +93,8 @@ app.use((req, res, next) => {
 });
 // Endpoint to provide flight source and destination data
 app.get('/flights', (req, res) => {
+  req.body.user.email;
+
     console.log("flights");
     let flightDetails = new FlightDetails();
 

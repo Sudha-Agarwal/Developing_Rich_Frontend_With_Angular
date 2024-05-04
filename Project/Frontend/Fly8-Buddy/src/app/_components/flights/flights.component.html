@@ -48,7 +48,7 @@
                 <label class="mx-3">Children</label>
                 <button class="btn btn-outline-secondary" type="button" (click)="flight.numberOfChildren = flight.numberOfChildren ? flight.numberOfChildren + 1 : 1">+</button>
               </div>
-              <input type="number" class="form-control text-center small-input w-25" id="numberOfChildren" name="numberOfChildren" [(ngModel)]="flight.numberOfChildren" min="0">
+              <input type="number" class="form-control text-center small-input w-25" id="numberOfChildren" name="numberOfChildren" [(ngModel)]="flight.numberOfChildren" min="0" max="5">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" (click)="flight.numberOfChildren = flight.numberOfChildren && flight.numberOfChildren > 0 ? flight.numberOfChildren - 1 : 0">-</button>
               </div>
