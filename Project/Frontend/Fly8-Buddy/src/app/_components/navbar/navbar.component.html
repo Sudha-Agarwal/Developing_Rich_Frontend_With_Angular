@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="'/home'" [routerLinkActive]="['active-link']">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLink]="'/flight'" [routerLinkActive]="['active-link']">Flights</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" >Disabled</a>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/pipes'" [routerLinkActive]="['active-link']" >Pipes</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/animation'" [routerLinkActive]="['active-link']" >Animation</a>
+          </li>          
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <ul class="navbar-nav ml-lg-auto ml-0 d-flex flex-row mt-lg-0 mt-2">
+            <li class="nav-item">
+                
+                <a *ngIf = "isLoggedOut" class="btn btn-primary mx-2" routerLink="/login" [routerLinkActive]="['active-link']" (click)="openLoginModal()">Login</a> 
+                <button *ngIf = "isLoggedIn" (click)="logout()" class="btn btn-primary mx-2" >Logout</button>                               
+              </li>               
+              <li class="nav-item">
+                <a class="btn btn-primary" routerLink="/signup" [routerLinkActive]="['active-link']">SignUp</a>
+                
+              </li> 
+
+
+          </ul>
+       
+       
+       
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <form class="row g-3" #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required>
+    </div>
+    <div class="col-md-6">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" required>
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required email>
+    </div>
+    <div class="col-md-6">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required minlength="6">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" name="address" [(ngModel)]="user.address1">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" name="address2" [(ngModel)]="user.address2">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity" name="city" [(ngModel)]="user.city">
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select" name="state" [(ngModel)]="user.state">
+        <option value="" disabled selected>Choose...</option>
+        <!-- Add options for states -->
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip" name="zip" [(ngModel)]="user.zip">
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" name="check" [(ngModel)]="user.check">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary mb-5">Sign in</button>
+    </div>
+  </form>
+</div>

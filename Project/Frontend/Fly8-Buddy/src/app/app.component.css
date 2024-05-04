@@ -1,0 +1,23 @@
+/* Apply styles to the elements */
+html, body {
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  
+  main {
+    flex: 1; /* Grow to fill remaining space */
+  }
+  
+  footer {
+    flex-shrink: 0; /* Don't shrink the footer if content grows */
+    
+  }
+  
+
+  

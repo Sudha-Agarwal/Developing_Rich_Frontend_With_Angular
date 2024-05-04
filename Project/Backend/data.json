@@ -1,0 +1,144 @@
+[
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 600,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-10-21"
+    },
+    "passengers": [
+      {
+        "name": "fgsdh",
+        "age": 10
+      },
+      {
+        "name": "dsth",
+        "age": 20
+      },
+      {
+        "name": "dysfy",
+        "age": 30
+      }
+    ]
+  },
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 800,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-11-01"
+    },
+    "passengers": [
+      {
+        "name": "fgsdh",
+        "age": 20
+      },
+      {
+        "name": "dsth",
+        "age": 2
+      },
+      {
+        "name": "dysfy",
+        "age": 30
+      },
+      {
+        "name": "syy",
+        "age": 25
+      }
+    ]
+  },
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 1200,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-11-01"
+    },
+    "passengers": [
+      {
+        "name": "fgsdh",
+        "age": 20
+      },
+      {
+        "name": "dsth",
+        "age": 23
+      },
+      {
+        "name": "dysfy",
+        "age": 12
+      },
+      {
+        "name": "syy",
+        "age": 45
+      },
+      {
+        "name": "stg",
+        "age": 67
+      },
+      {
+        "name": "ds",
+        "age": 78
+      }
+    ]
+  },
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 400,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-11-01"
+    },
+    "passengers": [
+      {
+        "name": "tye",
+        "age": 24
+      },
+      {
+        "name": "srtrt",
+        "age": 12
+      }
+    ]
+  },
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 400,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-11-01"
+    },
+    "passengers": [
+      {
+        "name": "zsdf",
+        "age": 23
+      },
+      {
+        "name": "sd",
+        "age": 24
+      }
+    ]
+  },
+  {
+    "customerEmail": "sudha@gmail.com",
+    "totalPrice": 400,
+    "flightDetails": {
+      "source": "New York",
+      "destination": "London",
+      "date": "2023-11-01"
+    },
+    "passengers": [
+      {
+        "name": "q45",
+        "age": 12
+      },
+      {
+        "name": "ar",
+        "age": 23
+      }
+    ]
+  }
+]
